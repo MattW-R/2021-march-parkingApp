@@ -15,5 +15,14 @@
   "bugs": {
     "url": "https://github.com/MattW-R/2021-march-parkingApp/issues"
   },
-  "homepage": "https://github.com/MattW-R/2021-march-parkingApp#readme"
+  "homepage": "https://github.com/MattW-R/2021-march-parkingApp#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongodb": "^3.6.9"
+  },
+  "devDependencies": {
+    "jest": "^27.0.4",
+    "nodemon": "^2.0.7"
+  }
 }
