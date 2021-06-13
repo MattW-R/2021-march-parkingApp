@@ -1,0 +1,19 @@
+{
+  "name": "2021-march-parkingapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattW-R/2021-march-parkingApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MattW-R/2021-march-parkingApp/issues"
+  },
+  "homepage": "https://github.com/MattW-R/2021-march-parkingApp#readme"
+}
