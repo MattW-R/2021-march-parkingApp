@@ -1,8 +1,5 @@
-const JsonResponse = require('./JsonResponseService')
-
-let getAllCarParks = async (collection, options = {}) => {
-    const result = await collection.find({}).toArray()
-    return result
+let getAllCarParks = async (collection) => {
+    return collection.find({}).toArray()
 }
 
 module.exports.getAllCarParks = getAllCarParks

@@ -8,11 +8,12 @@ let getAllCarParks = async (req, res) => {
             let carParks = await carParkService.getAllCarParks(collection)
             if (carParks.length > 0) {
                 let jsonRes = jsonResponse.successful()
+                jsonRes.message = 'Success - car parks located'
                 jsonRes.data = carParks
                 res.json(jsonRes)
             } else {
                 let jsonRes = jsonResponse.unsuccessful()
-                jsonRes.message = "There are no car parks found"
+                jsonRes.message = 'There are no car parks found'
                 jsonRes.status = 204
                 res.json(jsonRes)
             }
@@ -27,7 +28,7 @@ let getAllCarParks = async (req, res) => {
 
 let apiFail = (req, res) => {
     let jsonRes = jsonResponse.unsuccessful();
-    jsonRes.message = "This route does not allow for PUT, POST or DELETE requests"
+    jsonRes.message = 'This route does not allow for PUT, POST or DELETE requests'
     jsonRes.status = 405
     res.json(jsonRes)
 }
