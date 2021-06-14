@@ -1,7 +1,7 @@
 @import url('./../../index.css');
 
 .card {
-    margin: 0 auto;
+    margin: 0 auto 16px;
     box-sizing: border-box;
     max-width: 312px;
     border: 1px solid #BBBBBB;
