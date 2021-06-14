@@ -8,4 +8,4 @@ app.use(cors())
 
 Routes(app)
 
-app.listen(9000)
+module.exports = app
