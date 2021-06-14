@@ -1,6 +1,6 @@
 import './AllCarParks.css'
 import CarPark from './../CarPark/CarPark'
-import {useEffect, useState} from "react"
+import {useEffect, useState} from 'react'
 import NoCarParks from '../NoCarParks/NoCarParks'
 
 const AllCarParks = () => {

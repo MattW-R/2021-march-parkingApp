@@ -3,7 +3,7 @@ import {Route, BrowserRouter as Router} from 'react-router-dom'
 import AllCarParks from './Component/AllCarParks/AllCarParks'
 
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Route path="/all" component={AllCarParks}/>
