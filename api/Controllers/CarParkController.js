@@ -3,30 +3,34 @@ const carParkService = require('../Services/CarParkService')
 const jsonResponse = require('../Services/JsonResponseService')
 
 let getAllCarParks = async (req, res) => {
-    connectToDb(async (collection) => {
-        let carParks = await carParkService.getAllCarParks(collection);
-        let jsonRes = jsonResponse.successful();
-        jsonRes.data = carParks;
-        res.json(jsonRes); // Displays the results
-    })
+    try {
+        connectToDb(async (collection) => {
+            let carParks = await carParkService.getAllCarParks(collection)
+            if (carParks.length > 0) {
+                let jsonRes = jsonResponse.successful()
+                jsonRes.data = carParks
+                res.json(jsonRes)
+            } else {
+                let jsonRes = jsonResponse.unsuccessful()
+                jsonRes.message = "There are no car parks found"
+                jsonRes.status = 204
+                res.json(jsonRes)
+            }
+        })
+    } catch (error) {
+        let jsonRes = jsonResponse.unsuccessful()
+        jsonRes.message = error.message
+        jsonRes.status = 500
+        res.json(jsonRes)
+    }
 }
 
-let apiFail =
-    //add message don't use this for post/delete etc
-    //amend the unsuccessful message here - amend hte message property of the response
-
-    async (req, res) => {
-    connectToDb(async (collection) => {
-        let carParks = await carParkService.getAllCarParks(collection);
-        let jsonRes = jsonResponse.unsuccessful();
-        jsonRes.data = carParks;
-        res.json(jsonRes); // Displays the results
-    })
+let apiFail = (req, res) => {
+    let jsonRes = jsonResponse.unsuccessful();
+    jsonRes.message = "This route does not allow for PUT, POST or DELETE requests"
+    jsonRes.status = 405
+    res.json(jsonRes)
 }
-
-//needs to give a JSON response but it doesn't need to try and query the database
-
-
 
 module.exports.getAllCarParks = getAllCarParks
 module.exports.apiFail = apiFail

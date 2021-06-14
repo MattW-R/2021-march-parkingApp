@@ -2,7 +2,7 @@ let unsuccessful = () => {
     return {
         "success": false,
         "message": "",
-        "status": 404,
+        "status": "",
         "data": []
     }
 }

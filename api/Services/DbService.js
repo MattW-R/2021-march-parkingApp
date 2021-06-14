@@ -6,7 +6,7 @@ const connectToDb = (callback) => {
         console.log('Connected to MongoDB')
         const db = client.db('parkingScout')
         const collection = db.collection('carParks')
-        const result = await callback(collection)
+        callback(collection)
     })
 }
 
