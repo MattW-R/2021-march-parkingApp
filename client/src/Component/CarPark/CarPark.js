@@ -1,6 +1,6 @@
-import "./CarPark.css"
+import './CarPark.css'
 
-const CarPark= (props) => {
+const CarPark = (props) => {
     return (
         <article className="card">
             <h3>{props.name}</h3>

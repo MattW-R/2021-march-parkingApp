@@ -1,4 +1,4 @@
-import "./NoCarParks.css"
+import './NoCarParks.css'
 
 const NoCarParks = () => {
     return (
