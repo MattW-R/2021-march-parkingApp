@@ -2,7 +2,7 @@ import "./CarPark.css"
 
 const carPark= (props) => {
     return (
-        <article>
+        <article className="card">
             <h3>{props.name}</h3>
             <p>{props.location}</p>
             <p>{props.totalSpaces} total spaces</p>
