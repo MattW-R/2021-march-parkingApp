@@ -7,5 +7,3 @@ app.use(express.json())
 app.use(cors())
 
 Routes(app)
-
-app.listen(9000)
