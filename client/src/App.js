@@ -1,4 +1,3 @@
-import './App.css'
 import {Route, BrowserRouter as Router} from 'react-router-dom'
 import AllCarParks from './Component/AllCarParks/AllCarParks'
 
