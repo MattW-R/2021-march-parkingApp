@@ -4,9 +4,9 @@ In both the api/ & client/ directories run in the command line:
 
 To start the api, within the api directory run:
 
-```node index.js```
+```node AllCarParks.js```
 or
-```nodemon index.js```
+```nodemon AllCarParks.js```
 
 To start the React app, within the client directory run:
 
