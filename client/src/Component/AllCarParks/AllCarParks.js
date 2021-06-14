@@ -2,7 +2,7 @@ import './AllCarParks.css'
 import CarPark from './../CarPark/CarPark'
 import {useEffect, useState} from "react"
 
-const allCarParks = () => {
+const AllCarParks = () => {
     const[carParks, setCarParks] = useState([])
     useEffect(()=>{
         fetch('localhost:9000/carParks')
@@ -30,4 +30,4 @@ const allCarParks = () => {
     )
 }
 
-export default allCarParks
+export default AllCarParks

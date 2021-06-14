@@ -1,6 +1,6 @@
 import "./CarPark.css"
 
-const carPark= (props) => {
+const CarPark= (props) => {
     return (
         <article className="card">
             <h3>{props.name}</h3>
@@ -11,4 +11,4 @@ const carPark= (props) => {
     )
 }
 
-export default carPark
+export default CarPark
