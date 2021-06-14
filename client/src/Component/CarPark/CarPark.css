@@ -15,14 +15,14 @@
 
 .card h3 {
     height: 24px;
-    font-size: 16px;
+    font-size: 1.14rem;
     font-weight: bold;
-    line-height: 24px;
+    line-height: 1.71rem;
 }
 
 .card p {
     height: 21px;
-    font-size: 14px;
+    font-size: 1rem;
     font-weight: 500;
-    line-height: 21px;
+    line-height: 1.5rem;
 }
