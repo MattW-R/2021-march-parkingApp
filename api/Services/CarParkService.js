@@ -1,10 +1,10 @@
 let getAllCarParks = async (collection) => {
     return collection.find({}).toArray()
 }
-let getAvailableCarParks = async (carParkCollection,bookingCollection, duration) => {
+let getAvailableCarParks = async (carParkCollection, duration) => {
     const startTime = Date.now()
     const endTime = startTime + (duration * 60 * 60 * 1000)
-    return carParkCollection.aggregate([
+    let carParks = await carParkCollection.aggregate([
         {
             $lookup: {
                 from: 'bookings',
@@ -50,7 +50,13 @@ let getAvailableCarParks = async (carParkCollection,bookingCollection, duration)
             $unset: 'bookings'
         }
 
+
     ]).toArray()
+    carParks = await carParks.filter((carPark) => {
+        return carPark.availableSpaces > 0
+    })
+
+    return carParks
 }
 module.exports.getAllCarParks = getAllCarParks
 module.exports.getAvailableCarParks = getAvailableCarParks

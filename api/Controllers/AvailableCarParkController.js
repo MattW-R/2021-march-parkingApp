@@ -5,20 +5,20 @@ const jsonResponse = require('../Services/JsonResponseService')
 
 let getAvailableCarParks = async (req, res) => {
     try {
-        connectToDb(async (collection, bookingCollection) => {
-            let carParks = await carParkService.getAvailableCarParks(collection, bookingCollection, 1000)
-            res.json(carParks)
-            // if (carParks.length > 0) {
-            //     let jsonRes = jsonResponse.successful()
-            //     jsonRes.message = 'Success - car parks located'
-            //     jsonRes.data = carParks
-            //     res.json(jsonRes)
-            // } else {
-            //     let jsonRes = jsonResponse.unsuccessful()
-            //     jsonRes.message = 'There are no car parks found'
-            //     jsonRes.status = 204
-            //     res.json(jsonRes)
-            // }
+        connectToDb(async (collection) => {
+            const duration = req.query.duration||1
+            let carParks = await carParkService.getAvailableCarParks(collection, duration)
+            if (carParks.length > 0) {
+                let jsonRes = jsonResponse.successful()
+                jsonRes.message = 'Success - car parks located'
+                jsonRes.data = carParks
+                res.json(jsonRes)
+            } else {
+                let jsonRes = jsonResponse.unsuccessful()
+                jsonRes.message = 'There are no car parks found'
+                jsonRes.status = 204
+                res.json(jsonRes)
+            }
         })
     } catch (error) {
         let jsonRes = jsonResponse.unsuccessful()
