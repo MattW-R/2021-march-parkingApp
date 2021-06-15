@@ -6,7 +6,7 @@ const jsonResponse = require('../Services/JsonResponseService')
 let getAvailableCarParks = async (req, res) => {
     try {
         connectToDb(async (collection, bookingCollection) => {
-            let carParks = await carParkService.getAvailableCarParks(collection, bookingCollection, 1)
+            let carParks = await carParkService.getAvailableCarParks(collection, bookingCollection, 8)
             res.json(carParks)
             // if (carParks.length > 0) {
             //     let jsonRes = jsonResponse.successful()

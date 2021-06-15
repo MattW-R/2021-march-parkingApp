@@ -2,31 +2,42 @@ let getAllCarParks = async (collection) => {
     return collection.find({}).toArray()
 }
 let getAvailableCarParks = async (carParkCollection,bookingCollection, duration) => {
-    return bookingCollection.aggregate([{
-        $lookup: {
-            from: 'carParks',
-            localField: 'carParkId',
-            foreignField: '_id',
-            as: 'carPark'
-        }
-    },
+    const startTime = Date.now()
+    const endTime = startTime + (duration * 60 * 60 * 1000)
+    return carParkCollection.aggregate([
         {
-            $group: {
-                _id: '$carParkId',
-                'carPark': {
-                $push: {
-                    $mergeObjects: '$carPark'
-                }
-                }
-                }
-            },
-        {
-            $replaceRoot:{ newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$carPark", 0 ] }, "$$ROOT" ]}}
+            $lookup: {
+                from: 'bookings',
+                localField: '_id',
+                foreignField: 'carParkId',
+                as: 'bookings'
+            }
         },
         {
-            $unset: 'carPark'
+            $project: {
+                bookings: {
+                    $filter: {
+                        input: '$bookings',
+                        as: 'bookings',
+                        cond: {
+                            $and: [
+                                {
+                                    $lt: ['$$bookings.startDateTime', endTime]
+                                },
+                                {
+                                    $gt: [{
+                                        $sum: ['$$bookings.startDateTime',
+                                            {$multiply: ['$$bookings.duration', 60 * 60 * 1000]}]
+                                    },
+                                        startTime]
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
         }
-        ]).toArray()
+    ]).toArray()
 }
 module.exports.getAllCarParks = getAllCarParks
 module.exports.getAvailableCarParks = getAvailableCarParks
