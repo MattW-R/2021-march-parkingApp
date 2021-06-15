@@ -9,8 +9,21 @@ let getAvailableCarParks = async (carParkCollection,bookingCollection, duration)
             foreignField: '_id',
             as: 'carPark'
         }
-    }]).toArray()
+    },
+        {
+            $group: {
+                _id: '$carParkId',
+                'carPark': {
+                $push: {
+                    $mergeObjects: '$$ROOT'
+                }
+                }
+                }
+            },
 
+
+        // {$replaceRoot:{ newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$carPark", 0 ] }, "$$ROOT" ]}}}
+        ]).toArray()
 }
 module.exports.getAllCarParks = getAllCarParks
 module.exports.getAvailableCarParks = getAvailableCarParks
