@@ -7,7 +7,6 @@ let getAvailableCarParks = async (req, res) => {
     try {
         connectToDb(async (collection) => {
             const duration = DurationValidator(req.query.duration)
-            console.log(duration)
             let carParks = await carParkService.getAvailableCarParks(collection, duration)
             if (carParks.length > 0) {
                 let jsonRes = jsonResponse.successful()

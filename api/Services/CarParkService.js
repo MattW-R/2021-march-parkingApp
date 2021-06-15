@@ -3,7 +3,7 @@ let getAllCarParks = async (collection) => {
 }
 let getAvailableCarParks = async (carParkCollection, duration) => {
     const msInHour = 60 * 60 * 1000
-    const startTime = new Date(Math.round(Date.now() / msInHour ) * msInHour)
+    const startTime = Math.round(Date.now() / msInHour ) * msInHour
     const endTime = startTime + (duration * msInHour)
     let carParks = await carParkCollection.aggregate([
         {
