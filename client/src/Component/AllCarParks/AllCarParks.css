@@ -13,3 +13,20 @@
     letter-spacing: 0;
     line-height: 2.57rem;
 }
+
+.back {
+    display: flex;
+    justify-content: flex-start;
+    max-width: 312px;
+    margin: 0 auto;
+    font-size: 1rem;
+    line-height: 21px;
+    color: #6E6E6E;
+    font-family: Prompt, sans-serif;
+    padding-bottom: 10px;
+}
+
+a:link, a:visited, a:hover, a:active {
+    color: #6E6E6E;
+    text-decoration: none;
+}
