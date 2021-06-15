@@ -12,7 +12,7 @@ describe('JsonResponseService', () => {
     test('Json response for unsuccessful', () => {
         expect(JsonResponse.unsuccessful()).toMatchObject({
             success: false,
-            status: "",
+            status: 500,
             message: "",
             data: []
         })
