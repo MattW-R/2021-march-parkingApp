@@ -15,14 +15,17 @@ let getAvailableCarParks = async (carParkCollection,bookingCollection, duration)
                 _id: '$carParkId',
                 'carPark': {
                 $push: {
-                    $mergeObjects: '$$ROOT'
+                    $mergeObjects: '$carPark'
                 }
                 }
                 }
             },
-
-
-        // {$replaceRoot:{ newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$carPark", 0 ] }, "$$ROOT" ]}}}
+        {
+            $replaceRoot:{ newRoot: { $mergeObjects: [ { $arrayElemAt: [ "$carPark", 0 ] }, "$$ROOT" ]}}
+        },
+        {
+            $unset: 'carPark'
+        }
         ]).toArray()
 }
 module.exports.getAllCarParks = getAllCarParks
