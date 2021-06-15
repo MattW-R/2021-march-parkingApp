@@ -6,7 +6,10 @@ const CarPark = (props) => {
             <h3>{props.name}</h3>
             <p>{props.location}</p>
             <p>{props.totalSpaces} total spaces</p>
-            <p>£{props.hourlyRate} per hour</p>
+            <p>{(props.hourlyRate).toLocaleString('en-GB', {
+                style: 'currency',
+                currency: 'GBP'
+            })} per hour</p>
         </article>
     )
 }
