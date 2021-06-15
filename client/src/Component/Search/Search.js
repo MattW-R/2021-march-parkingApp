@@ -22,6 +22,40 @@ const Search = () => {
         return today
     }
 
+
+    const generateArray = () => {
+        let hours
+        for (hours = 1; hours <= 12; hours++ + 'hrs') {
+        console.log (hours)
+        }
+    }
+
+    generateArray()
+    //
+    //
+    //
+    // const generateOptions = (hours) => {
+    //         hours.forEach(hours => {
+    //             return hours + ' hrs'
+    //         })}
+    //
+
+
+    // let animals = ['chipmunk', 'gopher', 'marmot']
+    // animals.forEach(function (animal) {
+    //     console.log(animal)
+    // })
+
+    // for (let step = 0; step < 5; step++) {
+    //     // Runs 5 times, with values of step 0 through 4.
+    //     console.log('Walking east one step');
+    // }
+
+    // const strings = ['Home', 'Shop', 'About Me'];
+    // const listItems = strings.map(string => <li>{string}</li>);
+    // <ul>{listItems}</ul>
+    //
+
     return (
         <section className="search-container">
             <div className="search-inputs-container">
@@ -36,13 +70,14 @@ const Search = () => {
                 <div className="search-input-container">
                     <p>Duration</p>
                     <select>
-                        <option value="1">1 hr</option>
-                        <option value="2">2 hrs</option>
-                        <option value="3">3 hrs</option>
-                        <option value="4">4 hrs</option>
-                        <option value="5">5 hrs</option>
-                        <option value="6">6 hrs</option>
-                        <option value="7">7 hrs</option>
+                        {/*{listDurationOptions}*/}
+                        {/*<option value="1">1 hr</option>*/}
+                        {/*<option value="2">2 hrs</option>*/}
+                        {/*<option value="3">3 hrs</option>*/}
+                        {/*<option value="4">4 hrs</option>*/}
+                        {/*<option value="5">5 hrs</option>*/}
+                        {/*<option value="6">6 hrs</option>*/}
+                        {/*<option value="7">7 hrs</option>*/}
                     </select>
                 </div>
             </div>
