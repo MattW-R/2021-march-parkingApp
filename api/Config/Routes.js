@@ -18,7 +18,6 @@ let routes = (app) => {
     app.put('/availableCarParks', NoMethodController)
 
     app.delete('/availableCarParks', NoMethodController)
-
 }
 
 module.exports = routes

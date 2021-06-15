@@ -2,8 +2,9 @@ let getAllCarParks = async (collection) => {
     return collection.find({}).toArray()
 }
 let getAvailableCarParks = async (carParkCollection, duration) => {
-    const startTime = Date.now()
-    const endTime = startTime + (duration * 60 * 60 * 1000)
+    const msInHour = 60 * 60 * 1000
+    const startTime = new Date(Math.round(Date.now() / msInHour ) * msInHour)
+    const endTime = startTime + (duration * msInHour)
     let carParks = await carParkCollection.aggregate([
         {
             $lookup: {
@@ -27,7 +28,7 @@ let getAvailableCarParks = async (carParkCollection, duration) => {
                                 {
                                     $gt: [{
                                         $sum: ['$$bookings.startDateTime',
-                                            {$multiply: ['$$bookings.duration', 60 * 60 * 1000]}]
+                                            {$multiply: ['$$bookings.duration', msInHour]}]
                                     },
                                         startTime]
                                 }
