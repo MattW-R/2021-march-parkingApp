@@ -21,16 +21,15 @@ const Search = () => {
         }
         return today
     }
-
-
-    const generateArray = () => {
-        let hours
-        for (hours = 1; hours <= 12; hours++ + 'hrs') {
-        console.log (hours)
-        }
-    }
-
-    generateArray()
+    //
+    //
+    // const generateArray = () => {
+    //     let hours
+    //     for (hours = 1; hours <= 12; hours++ + 'hrs') {
+    //     console.log (hours)
+    //     }
+    // }
+    //
     //
     //
     //
@@ -71,13 +70,13 @@ const Search = () => {
                     <p>Duration</p>
                     <select>
                         {/*{listDurationOptions}*/}
-                        {/*<option value="1">1 hr</option>*/}
-                        {/*<option value="2">2 hrs</option>*/}
-                        {/*<option value="3">3 hrs</option>*/}
-                        {/*<option value="4">4 hrs</option>*/}
-                        {/*<option value="5">5 hrs</option>*/}
-                        {/*<option value="6">6 hrs</option>*/}
-                        {/*<option value="7">7 hrs</option>*/}
+                        <option value="1">1 hr</option>
+                        <option value="2">2 hrs</option>
+                        <option value="3">3 hrs</option>
+                        <option value="4">4 hrs</option>
+                        <option value="5">5 hrs</option>
+                        <option value="6">6 hrs</option>
+                        <option value="7">7 hrs</option>
                     </select>
                 </div>
             </div>

@@ -10,7 +10,7 @@ const Home = () => {
                 </div>
                 <Search />
                 <div className="home-button-container">
-                    <button className="secondary-button">View all car parks</button>
+                    <a href="./all"><button className="secondary-button">View all car parks</button></a>
                 </div>
                 <img className="home-img-container" src="city-driver.svg" alt="Woman with a red car" />
         </main>
