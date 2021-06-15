@@ -14,7 +14,7 @@ let getAvailableCarParks = async (carParkCollection,bookingCollection, duration)
             }
         },
         {
-            $project: {
+            $addFields: {
                 bookings: {
                     $filter: {
                         input: '$bookings',
@@ -36,7 +36,20 @@ let getAvailableCarParks = async (carParkCollection,bookingCollection, duration)
                     }
                 }
             }
+        },
+        {
+            $addFields: {
+                availableSpaces: {
+                    $subtract: ['$totalSpaces', {
+                        $size: '$bookings'
+                    }]
+                }
+            }
+        },
+        {
+            $unset: 'bookings'
         }
+
     ]).toArray()
 }
 module.exports.getAllCarParks = getAllCarParks
