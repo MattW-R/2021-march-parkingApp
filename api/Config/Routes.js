@@ -1,22 +1,23 @@
 const CarParkController = require('../Controllers/CarParkController')
 const AvailableCarParkController = require('../Controllers/AvailableCarParkController')
+const NoMethodController = require('../Controllers/NoMethodController')
 
 let routes = (app) => {
-    app.get('/carParks', CarParkController.getAllCarParks)
+    app.get('/carParks', CarParkController)
 
-    app.post('/carParks', CarParkController.apiFail)
+    app.post('/carParks', NoMethodController)
 
-    app.put('/carParks', CarParkController.apiFail)
+    app.put('/carParks', NoMethodController)
 
-    app.delete('/carParks', CarParkController.apiFail)
+    app.delete('/carParks', NoMethodController)
 
-    app.get('/availableCarParks', AvailableCarParkController.getAvailableCarParks)
+    app.get('/availableCarParks', AvailableCarParkController)
 
-    app.post('/availableCarParks', AvailableCarParkController.apiFail)
+    app.post('/availableCarParks', NoMethodController)
 
-    app.put('/availableCarParks', AvailableCarParkController.apiFail)
+    app.put('/availableCarParks', NoMethodController)
 
-    app.delete('/availableCarParks', AvailableCarParkController.apiFail)
+    app.delete('/availableCarParks', NoMethodController)
 
 }
 

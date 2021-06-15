@@ -26,13 +26,4 @@ let getAllCarParks = async (req, res) => {
     }
 }
 
-let apiFail = (req, res) => {
-    let jsonRes = jsonResponse.unsuccessful();
-    jsonRes.message = 'This route does not allow for PUT, POST or DELETE requests'
-    jsonRes.status = 405
-    res.json(jsonRes)
-}
-
-module.exports.getAllCarParks = getAllCarParks
-module.exports.apiFail = apiFail
-
+module.exports = getAllCarParks
