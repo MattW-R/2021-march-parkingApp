@@ -1,9 +1,25 @@
 import './Search.css'
 
 const Search = () => {
+    let today = new Date()
 
-    const todaysDate = () => {
-        return new Date();
+    const todaysDate = (today) => {
+        let day = today.getDate()
+        let month = today.getMonth() + 1
+        let year = today.getFullYear().toString().slice(-2)
+        today = day + '-' + month + '-' + year
+        return today
+    }
+
+    const todaysTime = (today) => {
+        const hour = today.getHours()
+        const minutes = today.getMinutes()
+        if (minutes <30) {
+            today = hour + ':' + '00'
+        } else {
+            today = hour+1 + ':' + '00'
+        }
+        return today
     }
 
     return (
@@ -11,11 +27,11 @@ const Search = () => {
             <div className="search-inputs-container">
                 <div className="search-input-container">
                     <p>Date</p>
-                    <h6>{todaysDate}</h6>
+                    <h6>{todaysDate(today)}</h6>
                 </div>
                 <div className="search-input-container">
                     <p>Time</p>
-                    <h6>Today's time now</h6>
+                    <h6>{todaysTime(today)}</h6>
                 </div>
                 <div className="search-input-container">
                     <p>Duration</p>
