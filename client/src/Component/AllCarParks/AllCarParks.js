@@ -2,6 +2,8 @@ import './AllCarParks.css'
 import CarPark from './../CarPark/CarPark'
 import {useEffect, useState} from 'react'
 import NoCarParks from '../NoCarParks/NoCarParks'
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
+import {Link} from 'react-router-dom'
 
 const AllCarParks = () => {
     const[carParks, setCarParks] = useState([])
@@ -29,7 +31,10 @@ const AllCarParks = () => {
         <main>
             <div className="all-car-parks-header">
                 <h1>All car parks</h1>
-                <img src="parking-scout-logo.svg" alt="Parking Scout Logo" />
+                <img src="/parking-scout-logo.svg" alt="Parking Scout Logo" />
+            </div>
+            <div className="back">
+                <KeyboardArrowLeft /><Link to={"./"}>Back to home</Link>
             </div>
             {carParks}
         </main>
