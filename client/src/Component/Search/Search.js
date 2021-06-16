@@ -55,6 +55,10 @@ const Search = () => {
     // <ul>{listItems}</ul>
     //
 
+    const handleSelect = (e) => {
+        console.log(e.target.selectedOptions[0].value) //html element that has had the event happen to it
+    }
+
     return (
         <section className="search-container">
             <div className="search-inputs-container">
@@ -68,7 +72,7 @@ const Search = () => {
                 </div>
                 <div className="search-input-container">
                     <p>Duration</p>
-                    <select>
+                    <select onChange={handleSelect}>
                         {/*{listDurationOptions}*/}
                         <option value="1">1 hr</option>
                         <option value="2">2 hrs</option>

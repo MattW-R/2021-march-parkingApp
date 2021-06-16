@@ -18,3 +18,5 @@ const Home = () => {
 }
 
 export default Home
+
+//e target event listener value of option selection onclick
