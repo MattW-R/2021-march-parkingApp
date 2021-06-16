@@ -1,5 +1,6 @@
 import './Home.css'
 import Search from './../Search/Search'
+import {Link} from 'react-router-dom'
 
 const Home = () => {
     return (
@@ -10,7 +11,7 @@ const Home = () => {
                 </div>
                 <Search />
                 <div className="home-button-container">
-                    <a href="./all"><button className="secondary-button">View all car parks</button></a>
+                    <Link to={"./all"}><button className="secondary-button">View all car parks</button></Link>
                 </div>
                 <img className="home-img-container" src="city-driver.svg" alt="Woman with a red car" />
         </main>
@@ -18,5 +19,3 @@ const Home = () => {
 }
 
 export default Home
-
-//e target event listener value of option selection onclick

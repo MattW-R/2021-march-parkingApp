@@ -1,8 +1,9 @@
 import './SearchResults.css'
 import Search from './../Search/Search'
-import AvailableCarPark from "../AvailableCarPark/AvailableCarPark"
+import AvailableCarPark from '../AvailableCarPark/AvailableCarPark'
 import {useEffect, useState} from 'react'
-import NoCarParks from "../NoCarParks/NoCarParks"
+import NoCarParks from '../NoCarParks/NoCarParks'
+import {Link} from 'react-router-dom'
 
 const SearchResults = (props) => {
     const[availableCarParks, setCarParks] = useState([])
@@ -32,7 +33,7 @@ const SearchResults = (props) => {
         <main className="search-results-container">
             <div className="search-results-header">
                 <h1>Search results</h1>
-                <img src="/parking-scout-logo.svg" alt="Parking Scout Logo" />
+                <Link to="/"><img src="/parking-scout-logo.svg" alt="Parking Scout Logo" /></Link>
             </div>
             <Search duration={duration}/>
             <h6>Available car parks</h6>
