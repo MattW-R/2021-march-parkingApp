@@ -6,7 +6,7 @@ import {todaysDate, todaysTime} from '../../Services/DateTimeService'
 
 const BookCarPark = (props) => {
     const [carPark, setCarPark] = useState({})
-    let redirect = false
+    const [redirect, setRedirect] = useState(false)
 
     useEffect(() => {
         // Requires API to allow fetching of single car park
@@ -16,11 +16,11 @@ const BookCarPark = (props) => {
                 if (data.success) {
                     setCarPark(data.data)
                 } else {
-                    redirect = true
+                    setRedirect( true)
                 }
             })
             .catch(() => {
-                redirect = true
+                setRedirect( true)
             })
     }, [])
 
@@ -35,7 +35,7 @@ const BookCarPark = (props) => {
                 <img src="/parking-scout-logo.svg" alt="Parking Scout Logo" />
             </div>
             <div className="back">
-                <KeyboardArrowLeft /><Link to="/availableCarParks/1">Back to results</Link>
+                <KeyboardArrowLeft /><Link to={`/availableCarParks/${props.match.params.duration}`}>Back to results</Link>
             </div>
             <article className="booking card">
                 <h3>{carPark.name}</h3>
