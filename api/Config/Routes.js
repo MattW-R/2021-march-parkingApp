@@ -1,5 +1,6 @@
 const CarParkController = require('../Controllers/CarParkController')
 const AvailableCarParkController = require('../Controllers/AvailableCarParkController')
+const BookCarParkController = require('../Controllers/BookCarParkController')
 const NoMethodController = require('../Controllers/NoMethodController')
 
 let routes = (app) => {
@@ -18,6 +19,14 @@ let routes = (app) => {
     app.put('/availableCarParks', NoMethodController)
 
     app.delete('/availableCarParks', NoMethodController)
+
+    app.post('/bookCarParks', BookCarParkController)
+
+    app.get('/bookCarParks', NoMethodController)
+
+    app.put('/bookCarParks', NoMethodController)
+
+    app.delete('/bookCarParks', NoMethodController)
 }
 
 module.exports = routes
