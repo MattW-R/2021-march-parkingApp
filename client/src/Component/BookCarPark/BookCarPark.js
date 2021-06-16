@@ -1,7 +1,8 @@
 import './BookCarPark.css'
 import {useState, useEffect} from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
+import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft"
+import {todaysDate, todaysTime} from '../../Services/DateTimeService'
 
 const BookCarPark = (props) => {
     const [carPark, setCarPark] = useState({})
@@ -39,11 +40,13 @@ const BookCarPark = (props) => {
             <article className="booking card">
                 <h3>{carPark.name}</h3>
                 <p>{carPark.location || ''}</p>
-                <p>{carPark.totalSpaces} total spaces</p>
                 <p>{(carPark.hourlyRate || '').toLocaleString('en-GB', {
                     style: 'currency',
                     currency: 'GBP'
                 })} per hour</p>
+                <p>Date: {todaysDate()}</p>
+                <p>Start time: {todaysTime()}</p>
+                <p>Duration: {props.match.params.duration || ''} hrs</p>
                 <label htmlFor="email">Email</label>
                 <input type="email" placeholder="name@example.com" id="email" />
                 <label htmlFor="registration">Car reg</label>

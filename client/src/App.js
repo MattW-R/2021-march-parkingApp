@@ -10,7 +10,7 @@ const App = () => {
       <Route exact path="/" component={Home}/>
       <Route path="/all" component={AllCarParks}/>
       <Route path="/availableCarParks/:duration" component={SearchResults}/>
-      <Route path="/book/:id" component={BookCarPark}/>
+      <Route path="/book/:id/:duration" component={BookCarPark}/>
     </Router>
   )
 }

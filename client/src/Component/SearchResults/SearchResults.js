@@ -10,7 +10,7 @@ const SearchResults = (props) => {
 
     const displayAvailableCarParks = (availableCarParks) => {
         return availableCarParks.map((availableCarPark) => {
-            return <AvailableCarPark key={availableCarPark._id} id={availableCarPark._id} name={availableCarPark.name} location={availableCarPark.location} availableSpaces={availableCarPark.availableSpaces} hourlyRate={availableCarPark.hourlyRate} />
+            return <AvailableCarPark key={availableCarPark._id} id={availableCarPark._id} name={availableCarPark.name} location={availableCarPark.location} availableSpaces={availableCarPark.availableSpaces} hourlyRate={availableCarPark.hourlyRate} duration={duration} />
         })
     }
 
