@@ -1,4 +1,6 @@
 import './Search.css'
+import {useState} from 'react'
+import {Link} from 'react-router-dom'
 
 const Search = () => {
     let today = new Date()
@@ -55,9 +57,11 @@ const Search = () => {
     // <ul>{listItems}</ul>
     //
 
+    const [value, setValue] = useState('1')
     const handleSelect = (e) => {
-        console.log(e.target.selectedOptions[0].value) //html element that has had the event happen to it
+        setValue(e.target.selectedOptions[0].value)
     }
+    console.log (value)
 
     return (
         <section className="search-container">
@@ -84,8 +88,8 @@ const Search = () => {
                     </select>
                 </div>
             </div>
-            <div>
-                <button className="primary-button">Search</button>
+            <div className="search-button">
+                <Link to={`availableCarParks/${value}`}>Search</Link>
             </div>
         </section>
     )
