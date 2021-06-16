@@ -27,7 +27,7 @@ const SearchResults = (props) => {
                 }
             })
             .catch(() => setCarParks(<NoCarParks />))
-    },[])
+    },[props.match.params])
 
     return (
         <main className="search-results-container">

@@ -6,9 +6,8 @@ const DurationValidator = (duration) => {
         if (duration < 1)
             duration = 1
         return duration
-    } else {
-        return 1
     }
+    return 1
 }
 
 module.exports = DurationValidator
