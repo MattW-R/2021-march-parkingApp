@@ -4,6 +4,12 @@ describe('Duration Validator', () => {
     test('Response for passing in an integer', () => {
         expect(DurationValidator(5)).toEqual(5)
     })
+    test('Response for passing in a negative integer', () => {
+        expect(DurationValidator(-5)).toEqual(1)
+    })
+    test('Response for passing in 0', () => {
+        expect(DurationValidator(0)).toEqual(1)
+    })
     test('Response for passing in a string', () => {
         expect(DurationValidator('Hello')).toEqual(1)
     })

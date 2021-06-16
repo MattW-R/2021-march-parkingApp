@@ -2,7 +2,10 @@ const DurationValidator = (duration) => {
     duration = duration || 1
     duration = parseFloat(duration)
     if (typeof duration === 'number' && !isNaN(duration)) {
-        return Math.round(duration)
+        duration = Math.round(duration)
+        if (duration < 1)
+            duration = 1
+        return duration
     } else {
         return 1
     }
