@@ -1,9 +1,12 @@
-let getAllCarParks = async (collection) => {
+const NearestHourService = require('./NearestHourService')
+
+const getAllCarParks = async (collection) => {
     return collection.find({}).toArray()
 }
-let getAvailableCarParks = async (carParkCollection, duration) => {
+
+const getAvailableCarParks = async (carParkCollection, duration) => {
     const secsInHour = 60 * 60
-    const startTime = Math.round(Date.now() / (secsInHour * 1000) ) * secsInHour
+    const startTime = NearestHourService()
     const endTime = startTime + (duration * secsInHour)
     let carParks = await carParkCollection.aggregate([
         {
