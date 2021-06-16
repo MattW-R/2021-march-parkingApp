@@ -4,7 +4,7 @@ import AvailableCarPark from "../AvailableCarPark/AvailableCarPark"
 import {useEffect, useState} from 'react'
 import NoCarParks from "../NoCarParks/NoCarParks"
 
-const SearchResults = () => {
+const SearchResults = (props) => {
     const[availableCarParks, setCarParks] = useState([])
 
     const displayAvailableCarParks = (availableCarParks) => {
@@ -13,8 +13,10 @@ const SearchResults = () => {
         })
     }
 
+    const {duration} = props.match.params
+
     useEffect(() => {
-        fetch('http://localhost:9000/availableCarParks')
+        fetch('http://localhost:9000/availableCarParks' + '?duration=' + duration)
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
@@ -30,9 +32,9 @@ const SearchResults = () => {
         <main className="search-results-container">
             <div className="search-results-header">
                 <h1>Search results</h1>
-                <img src="parking-scout-logo.svg" alt="Parking Scout Logo" />
+                <img src="/parking-scout-logo.svg" alt="Parking Scout Logo" />
             </div>
-            <Search />
+            <Search duration={duration}/>
             <h6>Available car parks</h6>
             {availableCarParks}
         </main>

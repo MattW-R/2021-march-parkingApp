@@ -2,7 +2,10 @@ import './Search.css'
 import {useState} from 'react'
 import {Link} from 'react-router-dom'
 
-const Search = () => {
+const Search = (props) => {
+
+    let duration = props.duration || 1
+
     let today = new Date()
 
     const todaysDate = (today) => {
@@ -23,45 +26,11 @@ const Search = () => {
         }
         return today
     }
-    //
-    //
-    // const generateArray = () => {
-    //     let hours
-    //     for (hours = 1; hours <= 12; hours++ + 'hrs') {
-    //     console.log (hours)
-    //     }
-    // }
-    //
-    //
-    //
-    //
-    // const generateOptions = (hours) => {
-    //         hours.forEach(hours => {
-    //             return hours + ' hrs'
-    //         })}
-    //
 
-
-    // let animals = ['chipmunk', 'gopher', 'marmot']
-    // animals.forEach(function (animal) {
-    //     console.log(animal)
-    // })
-
-    // for (let step = 0; step < 5; step++) {
-    //     // Runs 5 times, with values of step 0 through 4.
-    //     console.log('Walking east one step');
-    // }
-
-    // const strings = ['Home', 'Shop', 'About Me'];
-    // const listItems = strings.map(string => <li>{string}</li>);
-    // <ul>{listItems}</ul>
-    //
-
-    const [value, setValue] = useState('1')
+    const [value, setValue] = useState(duration)
     const handleSelect = (e) => {
         setValue(e.target.selectedOptions[0].value)
     }
-    console.log (value)
 
     return (
         <section className="search-container">
@@ -76,8 +45,7 @@ const Search = () => {
                 </div>
                 <div className="search-input-container">
                     <p>Duration</p>
-                    <select onChange={handleSelect}>
-                        {/*{listDurationOptions}*/}
+                    <select defaultValue={duration} onChange={handleSelect}>
                         <option value="1">1 hr</option>
                         <option value="2">2 hrs</option>
                         <option value="3">3 hrs</option>
@@ -85,11 +53,12 @@ const Search = () => {
                         <option value="5">5 hrs</option>
                         <option value="6">6 hrs</option>
                         <option value="7">7 hrs</option>
+                        <option value="8">8 hrs</option>
                     </select>
                 </div>
             </div>
             <div className="search-button">
-                <Link to={`availableCarParks/${value}`}>Search</Link>
+                <Link to={`/availableCarParks/${value}`}>Search</Link>
             </div>
         </section>
     )

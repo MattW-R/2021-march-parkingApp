@@ -30,7 +30,7 @@ const AllCarParks = () => {
         <main>
             <div className="all-car-parks-header">
                 <h1>All car parks</h1>
-                <img src="parking-scout-logo.svg" alt="Parking Scout Logo" />
+                <img src="/parking-scout-logo.svg" alt="Parking Scout Logo" />
             </div>
             <div className="back">
                 <KeyboardArrowLeft /><a href="./">Back to home</a>
