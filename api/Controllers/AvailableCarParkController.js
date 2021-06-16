@@ -1,11 +1,13 @@
 const connectToDb = require('../Services/DbService')
 const carParkService = require('../Services/CarParkService')
 const jsonResponse = require('../Services/JsonResponseService')
+const DurationValidator = require('../Services/Validators/DurationValidator')
 
-let getAllCarParks = async (req, res) => {
+let getAvailableCarParks = async (req, res) => {
     try {
         connectToDb(async (collection) => {
-            let carParks = await carParkService.getAllCarParks(collection)
+            const duration = DurationValidator(req.query.duration)
+            let carParks = await carParkService.getAvailableCarParks(collection, duration)
             if (carParks.length > 0) {
                 let jsonRes = jsonResponse.successful()
                 jsonRes.message = 'Success - car parks located'
@@ -26,4 +28,4 @@ let getAllCarParks = async (req, res) => {
     }
 }
 
-module.exports = getAllCarParks
+module.exports = getAvailableCarParks
