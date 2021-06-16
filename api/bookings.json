@@ -5,7 +5,7 @@
   "email": "test@email.com",
   "registration": "LS56NIA",
   "duration": 2,
-  "startDateTime": 1627362785443,
+  "startDateTime": 1623852650,
   "carParkId": {
     "$oid": "60c73a20ae1624754daa9f53"
   }
@@ -16,9 +16,9 @@
   "email": "test2@email.com",
   "registration": "AK48IUP",
   "duration": 10,
-  "startDateTime": 1623779221000,
+  "startDateTime": 1623852650,
   "carParkId": {
-    "$oid": "60c73a20ae1624754daa9f53"
+    "$oid": "60c73a20ae1624754daa9f54"
   }
 },{
   "_id": {
@@ -27,9 +27,9 @@
   "email": "test3@email.com",
   "registration": "AK98IUP",
   "duration": 3,
-  "startDateTime": 1623779221000,
+  "startDateTime": 1623852650,
   "carParkId": {
-    "$oid": "60c73a20ae1624754daa9f53"
+    "$oid": "60c73a20ae1624754daa9f54"
   }
 },{
   "_id": {
@@ -38,7 +38,7 @@
   "email": "test4@email.com",
   "registration": "AK08IUP",
   "duration": 6,
-  "startDateTime": 1623779221000,
+  "startDateTime": 1623852650,
   "carParkId": {
     "$oid": "60c73a20ae1624754daa9f53"
   }
