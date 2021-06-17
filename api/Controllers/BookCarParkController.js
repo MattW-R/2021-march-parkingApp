@@ -1,11 +1,14 @@
 const connectToDb = require('../Services/DbService')
 const carParkService = require('../Services/CarParkService')
 const jsonResponse = require('../Services/JsonResponseService')
-const EmailValidator = require('../Services/Validators/EmailValidator')
+const emailValidator = require('../Services/Validators/EmailValidator')
+const RegistrationValidator = require ('../Services/Validators/RegistrationValidator')
 
 let postBooking = async (req, res) => {
 
-    if (EmailValidator){
+    console.log(req.body.email)
+
+    if (emailValidator(req.body.email) && registration){
         let newBooking = {
             email: req.body.email,
             registration: req.body.registration

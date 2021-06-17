@@ -1,16 +1,20 @@
-const jsonResponse = require('../JsonResponseService')
-
-const EmailValidator = (email) => {
-    const validEmailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
-    if (email.value.match(validEmailRegex)) {
-        return email
-    } else {
-        false
-
-    }
+const emailValidator = (email) => {
+    const result = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(email)
+    return result
 }
 
-module.exports = EmailValidator
+module.exports = emailValidator
 
-//input of an email string
-// output of a bolean
+const express = require('express');
+const { check } = require('express-validator');
+const app = express();
+app.use(express.json())
+app.post('/form', [
+    check('name').isLength({ min: 3 }).trim().escape(),
+    check('email').isEmail().normalizeEmail(),
+    check('age').isNumeric().trim().escape()
+], (req, res) => {
+    const name  = req.body.name
+    const email = req.body.email
+    const age   = req.body.age
+})
