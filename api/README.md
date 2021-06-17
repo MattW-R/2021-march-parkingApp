@@ -91,16 +91,16 @@
 ##/BookCarPark
 ###GET
 
-- Retrieves all the car parks data from the carParks collection in the database
+- Retrieves all the booking data from the bookings collection in the database
 - Data format - sends an array of:
-    - `{ '_id': '1', 'name': 'example', 'location': 'Avon Street, Bath BA1 1UF', 'totalSpaces': '1', 'hourlyRate': '1.6' }`
+    - `{ '_id': '60c876061e57a1bc8122a33f', 'email': 'email@example.com', 'registration': 'LS56NIA', 'duration': 1, 'startDateTime': 1623924861, 'carParkId': '60c73a20ae1624754daa9f53' }`
 - Returns success true / false:
     - if the data are received successfully
-        - `{'success':true, 'message':'', 'status': 200, 'data':[]}`
+        - `{'success':true, 'message':'Success - bookings located', 'status': 200, 'data':[]}`
     - if the data are not received successfully
         - `{'success':false, 'message':'', 'status': 500, 'data':[]}`
     - if there are not data in the database
-        - `{'success':false, 'message':'No car parks found!', 'status': 405 'data':[]}`
+        - `{'success':false, 'message':'There are no bookings found', 'status': 405 'data':[]}`
 
 ###/BookCarPark/{id}
 

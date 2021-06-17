@@ -23,7 +23,9 @@ let routes = (app) => {
 
     app.delete('/availableCarParks', NoMethodController)
 
-    app.get('/bookCarPark/:id', GetBookingController)
+    app.get('/bookCarPark', GetBookingController.getAllBookings)
+
+    app.get('/bookCarPark/:id', GetBookingController.getOneBooking)
 
     app.post('/bookCarPark', BookCarParkController)
 
