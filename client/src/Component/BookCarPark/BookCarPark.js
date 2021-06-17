@@ -8,6 +8,7 @@ const BookCarPark = (props) => {
     const [carPark, setCarPark] = useState({})
     const [redirect, setRedirect] = useState(false)
     const [redirectRoute, setRedirectRoute] = useState('/availableCarParks/1')
+    const [bookingErrorMessage, setBookingErrorMessage]= useState('')
 const HandleBookingButton = () => {
         const HandleBooking ={
             method: 'POST',
@@ -26,6 +27,12 @@ const HandleBookingButton = () => {
                     setRedirectRoute(`/bookingSuccess/${data.data._id}`)
                     setRedirect(true)
                 }
+                else {
+                    setBookingErrorMessage(data.message)
+                }
+            })
+            .catch(()=> {
+                setBookingErrorMessage('There was a problem connecting to the server')
             })
 }
     useEffect(() => {
@@ -73,6 +80,10 @@ const HandleBookingButton = () => {
                 <input type="text" placeholder="ABC 123" id="registration" />
                 <button onClick={HandleBookingButton}>Book</button>
             </article>
+            {bookingErrorMessage !== '' ? <article className="booking card errorMessage">
+                <p>{bookingErrorMessage}</p>
+
+            </article>: ''}
         </main>
     )
 }
