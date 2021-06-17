@@ -10,5 +10,10 @@ const getOneBooking = async (collection, id) => {
     }).toArray()
 }
 
+const postBooking = async (bookingCollection, newBooking) => {
+    return await bookingCollection.insertOne(newBooking)
+}
+
 module.exports.getAllBookings = getAllBookings
 module.exports.getOneBooking = getOneBooking
+module.exports.postBooking = postBooking

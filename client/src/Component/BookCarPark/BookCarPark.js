@@ -21,7 +21,7 @@ const BookCarPark = (props) => {
                     duration: props.match.params.duration
                 })
             }
-            fetch(`http://localhost:9000/bookCarPark/`, HandleBooking)
+            fetch(`http://localhost:9000/bookings/`, HandleBooking)
                 .then(response => response.json())
                 .then(data=> {
                     if (data.success){

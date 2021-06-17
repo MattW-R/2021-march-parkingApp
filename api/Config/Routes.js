@@ -24,15 +24,15 @@ let routes = (app) => {
 
     app.delete('/availableCarParks', NoMethodController)
 
-    app.get('/bookCarPark', GetBookingController.getAllBookings)
+    app.get('/bookings', GetBookingController.getAllBookings)
 
-    app.get('/bookCarPark/:id', GetBookingController.getOneBooking)
+    app.get('/bookings/:id', GetBookingController.getOneBooking)
 
-    app.post('/bookCarPark', [body('email').trim().isEmail().normalizeEmail(), body('registration').trim()], BookCarParkController)
+    app.post('/bookings', [body('email').trim().isEmail().normalizeEmail(), body('registration').trim()], BookCarParkController)
 
-    app.put('/bookCarPark', NoMethodController)
+    app.put('/bookings', NoMethodController)
 
-    app.delete('/bookCarPark', NoMethodController)
+    app.delete('/bookings', NoMethodController)
 }
 
 module.exports = routes

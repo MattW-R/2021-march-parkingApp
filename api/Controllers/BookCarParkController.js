@@ -1,5 +1,5 @@
 const connectToDb = require('../Services/DbService')
-const carParkService = require('../Services/CarParkService')
+const bookingService = require('../Services/BookingService')
 const jsonResponse = require('../Services/JsonResponseService')
 const durationValidator = require ('../Services/Validators/durationValidator')
 const registrationValidator = require ('../Services/Validators/registrationValidator')
@@ -36,7 +36,7 @@ let postBooking = async (req, res) => {
             }
 
             connectToDb(async (carParkCollection, bookingCollection) => {
-                const result = await carParkService.postBooking(bookingCollection, newBooking)
+                const result = await bookingService.postBooking(bookingCollection, newBooking)
                 if (result.insertedCount == 1) {
                     let jsonRes = jsonResponse.successful()
                     jsonRes.message = 'New booking added'

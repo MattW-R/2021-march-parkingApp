@@ -88,7 +88,7 @@
 - Returns success false:
     - `{'success':false, 'message':"This route does not allow for PUT, POST or DELETE requests", 'status': 405 'data':[]}`
 
-##/BookCarPark
+##/bookings
 ###GET
 
 - Retrieves all the booking data from the bookings collection in the database
@@ -102,7 +102,7 @@
     - if there are not data in the database
         - `{'success':false, 'message':'There are no bookings found', 'status': 405 'data':[]}`
 
-###/BookCarPark/{id}
+###/bookings/{id}
 
 ###GET
 - Retrieves the data from a specific booking with the specified id

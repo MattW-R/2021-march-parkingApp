@@ -11,7 +11,7 @@ const BookingSuccess = (props) => {
 
     useEffect(() => {
         // Requires API to allow fetching of single car park
-        fetch(`http://localhost:9000/bookCarPark/${props.match.params.id}`)
+        fetch(`http://localhost:9000/bookings/${props.match.params.id}`)
             .then(result => result.json())
             .then(data => {
                 if (data.success) {

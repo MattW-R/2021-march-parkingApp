@@ -70,12 +70,6 @@ const getAvailableCarParks = async (carParkCollection, duration) => {
     return carParks
 }
 
-let postBooking = async (bookingCollection, newBooking) => {
-    const result = await bookingCollection.insertOne(newBooking)
-    return result;
-}
-
 module.exports.getAllCarParks = getAllCarParks
 module.exports.getOneCarPark = getOneCarPark
 module.exports.getAvailableCarParks = getAvailableCarParks
-module.exports.postBooking = postBooking
