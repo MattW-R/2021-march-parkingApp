@@ -1,7 +1,7 @@
 const connectToDb = require('../Services/DbService')
 const carParkService = require('../Services/CarParkService')
 const jsonResponse = require('../Services/JsonResponseService')
-const DurationValidator = require('../Services/Validators/DurationValidator')
+const DurationValidator = require('../Services/Validators/durationValidator')
 
 let getAvailableCarParks = async (req, res) => {
     try {
@@ -13,11 +13,12 @@ let getAvailableCarParks = async (req, res) => {
                 jsonRes.message = 'Success - car parks located'
                 jsonRes.data = carParks
                 res.json(jsonRes)
+            } else {
+                let jsonRes = jsonResponse.unsuccessful()
+                jsonRes.message = 'There are no car parks found'
+                jsonRes.status = 204
+                res.json(jsonRes)
             }
-            let jsonRes = jsonResponse.unsuccessful()
-            jsonRes.message = 'There are no car parks found'
-            jsonRes.status = 204
-            res.json(jsonRes)
         })
     } catch (error) {
         let jsonRes = jsonResponse.unsuccessful()

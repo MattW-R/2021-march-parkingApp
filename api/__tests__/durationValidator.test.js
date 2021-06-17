@@ -1,4 +1,4 @@
-const DurationValidator = require('../Services/Validators/DurationValidator')
+const DurationValidator = require('../Services/Validators/durationValidator')
 
 describe('Duration Validator', () => {
     test('Response for passing in an integer', () => {

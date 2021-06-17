@@ -1,20 +1,20 @@
 const connectToDb = require('../Services/DbService')
-const carParkService = require('../Services/CarParkService')
 const jsonResponse = require('../Services/JsonResponseService')
+const BookingService = require('../Services/BookingService')
 const MongoId = require('mongodb').ObjectId
 
-let getAllCarParks = async (req, res) => {
+const getAllBookings = async (req, res) => {
     try {
-        connectToDb(async (collection) => {
-            let carParks = await carParkService.getAllCarParks(collection)
-            if (carParks.length > 0) {
+        connectToDb(async (collection, bookingCollection) => {
+            let bookings = await BookingService.getAllBookings(bookingCollection)
+            if (bookings.length > 0) {
                 let jsonRes = jsonResponse.successful()
-                jsonRes.message = 'Success - car parks located'
-                jsonRes.data = carParks
+                jsonRes.message = 'Success - bookings located'
+                jsonRes.data = bookings
                 res.json(jsonRes)
             } else {
                 let jsonRes = jsonResponse.unsuccessful()
-                jsonRes.message = 'There are no car parks found'
+                jsonRes.message = 'There are no bookings found'
                 jsonRes.status = 204
                 res.json(jsonRes)
             }
@@ -27,26 +27,26 @@ let getAllCarParks = async (req, res) => {
     }
 }
 
-let getOneCarPark = async (req, res) => {
+const getOneBooking = async (req, res) => {
     try {
-        connectToDb(async (collection) => {
+        connectToDb(async (collection, bookingCollection) => {
             if (MongoId.isValid(req.params.id)) {
                 const id = req.params.id
-                let carPark = await carParkService.getOneCarPark(collection, id)
-                if (carPark.length > 0) {
+                let booking = await BookingService.getOneBooking(bookingCollection, id)
+                if (booking.length > 0) {
                     let jsonRes = jsonResponse.successful()
-                    jsonRes.message = 'Success - car park located'
-                    jsonRes.data = carPark[0]
+                    jsonRes.message = 'Success - booking located'
+                    jsonRes.data = booking[0]
                     res.json(jsonRes)
                 } else {
                     let jsonRes = jsonResponse.unsuccessful()
-                    jsonRes.message = 'Car park not found'
+                    jsonRes.message = 'There are no bookings found'
                     jsonRes.status = 204
                     res.json(jsonRes)
                 }
             } else {
                 let jsonRes = jsonResponse.unsuccessful()
-                jsonRes.message = 'Invalid car park id'
+                jsonRes.message = 'Invalid booking id'
                 jsonRes.status = 400
                 res.json(jsonRes)
             }
@@ -59,5 +59,5 @@ let getOneCarPark = async (req, res) => {
     }
 }
 
-module.exports.getAllCarParks = getAllCarParks
-module.exports.getOneCarPark = getOneCarPark
+module.exports.getOneBooking = getOneBooking
+module.exports.getAllBookings = getAllBookings
