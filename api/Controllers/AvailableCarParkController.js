@@ -1,7 +1,7 @@
 const connectToDb = require('../Services/DbService')
 const carParkService = require('../Services/CarParkService')
 const jsonResponse = require('../Services/JsonResponseService')
-const DurationValidator = require('../Services/Validators/DurationValidator')
+const DurationValidator = require('../Services/Validators/durationValidator')
 
 let getAvailableCarParks = async (req, res) => {
     try {

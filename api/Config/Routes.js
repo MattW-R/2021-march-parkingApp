@@ -3,6 +3,7 @@ const AvailableCarParkController = require('../Controllers/AvailableCarParkContr
 const BookCarParkController = require('../Controllers/BookCarParkController')
 const NoMethodController = require('../Controllers/NoMethodController')
 const GetBookingController = require('../Controllers/GetBookingController')
+const { body } = require('express-validator')
 
 let routes = (app) => {
     app.get('/carParks', CarParkController.getAllCarParks)
@@ -27,7 +28,7 @@ let routes = (app) => {
 
     app.get('/bookCarPark/:id', GetBookingController.getOneBooking)
 
-    app.post('/bookCarPark', BookCarParkController)
+    app.post('/bookCarPark', [body('email').trim().isEmail().normalizeEmail(), body('registration').trim()], BookCarParkController)
 
     app.put('/bookCarPark', NoMethodController)
 
