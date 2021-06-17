@@ -30,7 +30,7 @@ const AllCarParks = () => {
     },[])
 
     return (
-        <main>
+        <main className="all-car-parks-page">
             <div className="all-car-parks-header">
                 <h1>All car parks</h1>
                 <Logo />
