@@ -4,7 +4,9 @@ const BookCarParkController = require('../Controllers/BookCarParkController')
 const NoMethodController = require('../Controllers/NoMethodController')
 
 let routes = (app) => {
-    app.get('/carParks', CarParkController)
+    app.get('/carParks', CarParkController.getAllCarParks)
+
+    app.get('/carParks/:id', CarParkController.getOneCarPark)
 
     app.post('/carParks', NoMethodController)
 
