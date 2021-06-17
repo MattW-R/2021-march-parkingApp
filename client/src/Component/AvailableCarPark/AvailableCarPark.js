@@ -1,4 +1,5 @@
 import './AvailableCarPark.css'
+import {Link} from 'react-router-dom'
 
 const AvailableCarPark = (props) => {
     return (
@@ -10,6 +11,7 @@ const AvailableCarPark = (props) => {
                 style: 'currency',
                 currency: 'GBP'
             })} per hour</p>
+            <Link className="bookButton" to={`/book/${props.id}/${props.duration}`}>Book</Link>
         </article>
     )
 }
