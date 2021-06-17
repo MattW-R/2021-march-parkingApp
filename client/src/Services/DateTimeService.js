@@ -1,7 +1,7 @@
-const formatDate = (today) => {
-    let day = today.getDate()
-    let month = today.getMonth() + 1
-    let year = today.getFullYear().toString().slice(-2)
+const formatDate = (date) => {
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear().toString().slice(-2)
     return day + '-' + month + '-' + year
 }
 
@@ -10,9 +10,9 @@ const todaysDate = () => {
     return formatDate(today)
 }
 
-const formatTime = (today) => {
-    const hour = today.getHours()
-    const minutes = today.getMinutes()
+const formatTime = (date) => {
+    const hour = date.getHours()
+    const minutes = date.getMinutes()
     if (minutes <30) {
         return hour + ':' + '00'
     } else {
