@@ -6,15 +6,28 @@ import {todaysDate, todaysTime} from '../../Services/DateTimeService'
 
 const BookingSuccess = (props) => {
     const [carPark, setCarPark] = useState({})
+    const [booking, setBooking] = useState({})
     const [redirect, setRedirect] = useState(false)
 
     useEffect(() => {
         // Requires API to allow fetching of single car park
-        fetch(`http://localhost:9000/carParks/1`)
+        fetch(`http://localhost:9000/bookings/${props.match.args.id}`)
             .then(result => result.json())
             .then(data => {
                 if (data.success) {
-                    setCarPark(data.data)
+                    setBooking(data.data)
+                    fetch(`http://localhost:9000/carParks/${data.data.carParkId}`)
+                        .then(result => result.json())
+                        .then(data=> {
+                            if (data.success){
+                                setCarPark(data.data)
+                            } else {
+                                setRedirect(true)
+                            }
+                        })
+                        .catch(()=> {
+                            setRedirect(true)
+                        })
                 } else {
                     setRedirect( true)
                 }
@@ -25,7 +38,7 @@ const BookingSuccess = (props) => {
     }, [])
 
     // if (redirect) {
-    //     return <Redirect to="/availableCarParks/1" />
+    //     return <Redirect to="/" />
     // }
 
     return (
@@ -47,8 +60,8 @@ const BookingSuccess = (props) => {
                 <p>Date: {todaysDate()}</p>
                 <p>Start time: {todaysTime()}</p>
                 <p>Duration: {props.match.params.duration || ''} hrs</p>
-                <p>Email: </p>
-                <p>Car reg: </p>
+                <p>Email: {booking.email} </p>
+                <p>Car reg: {booking.registration} </p>
                 <Link className="backToHomeButton" to="/">Back to home</Link>
             </article>
         </main>
