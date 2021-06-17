@@ -17,8 +17,8 @@ const BookCarPark = (props) => {
                 body: JSON.stringify({
                     carParkId: props.match.params.id,
                     email: document.getElementById('email').value,
-                    registration: document.getElementById('registration').value
-
+                    registration: document.getElementById('registration').value,
+                    duration: props.match.params.duration
                 })
             }
             fetch(`http://localhost:9000/bookings/`,HandleBooking)
