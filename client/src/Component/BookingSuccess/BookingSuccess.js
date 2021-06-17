@@ -57,8 +57,8 @@ const BookingSuccess = (props) => {
                     style: 'currency',
                     currency: 'GBP'
                 })} per hour</p>
-                <p>Date: {formatDate(new Date(booking.startDateTime) || new Date())}</p>
-                <p>Start time: {formatTime(new Date(booking.startDateTime) || new Date())}</p>
+                <p>Date: {formatDate(new Date(booking.startDateTime * 1000) || new Date())}</p>
+                <p>Start time: {formatTime(new Date(booking.startDateTime * 1000) || new Date())}</p>
                 <p>Duration: {booking.duration} hrs</p>
                 <p>Email: {booking.email} </p>
                 <p>Car reg: {booking.registration} </p>
