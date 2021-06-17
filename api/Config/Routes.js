@@ -2,6 +2,7 @@ const CarParkController = require('../Controllers/CarParkController')
 const AvailableCarParkController = require('../Controllers/AvailableCarParkController')
 const BookCarParkController = require('../Controllers/BookCarParkController')
 const NoMethodController = require('../Controllers/NoMethodController')
+const GetBookingController = require('../Controllers/GetBookingController')
 
 let routes = (app) => {
     app.get('/carParks', CarParkController.getAllCarParks)
@@ -22,9 +23,9 @@ let routes = (app) => {
 
     app.delete('/availableCarParks', NoMethodController)
 
-    app.post('/bookCarPark', BookCarParkController)
+    app.get('/bookCarPark/:id', GetBookingController)
 
-    app.get('/bookCarPark', NoMethodController)
+    app.post('/bookCarPark', BookCarParkController)
 
     app.put('/bookCarPark', NoMethodController)
 
