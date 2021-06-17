@@ -40,7 +40,7 @@ let getOneCarPark = async (req, res) => {
                     res.json(jsonRes)
                 } else {
                     let jsonRes = jsonResponse.unsuccessful()
-                    jsonRes.message = 'There are no car parks found'
+                    jsonRes.message = 'Car park not found'
                     jsonRes.status = 204
                     res.json(jsonRes)
                 }
