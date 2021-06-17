@@ -2,6 +2,7 @@ import './BookingSuccess.css'
 import {useState, useEffect} from 'react'
 import {Link, Redirect} from 'react-router-dom'
 import {formatDate, formatTime} from '../../Services/DateTimeService'
+import Logo from './../Logo/Logo'
 
 const BookingSuccess = (props) => {
     const [carPark, setCarPark] = useState({})
@@ -44,7 +45,7 @@ const BookingSuccess = (props) => {
         <main>
             <div className="all-car-parks-header">
                 <h1>Your booking</h1>
-                <img src="/parking-scout-logo.svg" alt="Parking Scout Logo" />
+                <Logo />
             </div>
             <div className="bookingSuccessPanel">
                 Success!

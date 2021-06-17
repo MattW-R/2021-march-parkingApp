@@ -1,40 +1,42 @@
 import './BookCarPark.css'
 import {useState, useEffect} from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft"
+import KeyboardArrowLeft from '@material-ui/icons/KeyboardArrowLeft'
 import {todaysDate, todaysTime} from '../../Services/DateTimeService'
+import Logo from './../Logo/Logo'
 
 const BookCarPark = (props) => {
     const [carPark, setCarPark] = useState({})
     const [redirect, setRedirect] = useState(false)
     const [redirectRoute, setRedirectRoute] = useState('/availableCarParks/1')
     const [bookingErrorMessage, setBookingErrorMessage]= useState('')
-const HandleBookingButton = () => {
-        const HandleBooking ={
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                carParkId: props.match.params.id,
-                email: document.getElementById('email').value,
-                registration: document.getElementById('registration').value
+    const HandleBookingButton = () => {
+            const HandleBooking ={
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    carParkId: props.match.params.id,
+                    email: document.getElementById('email').value,
+                    registration: document.getElementById('registration').value
 
-            })
-        }
-        fetch(`http://localhost:9000/bookings/`,HandleBooking)
-            .then(response => response.json())
-            .then(data=> {
-                if (data.success){
-                    setRedirectRoute(`/bookingSuccess/${data.data._id}`)
-                    setRedirect(true)
-                }
-                else {
-                    setBookingErrorMessage(data.message)
-                }
-            })
-            .catch(()=> {
-                setBookingErrorMessage('There was a problem connecting to the server')
-            })
-}
+                })
+            }
+            fetch(`http://localhost:9000/bookings/`,HandleBooking)
+                .then(response => response.json())
+                .then(data=> {
+                    if (data.success){
+                        setRedirectRoute(`/bookingSuccess/${data.data._id}`)
+                        setRedirect(true)
+                    }
+                    else {
+                        setBookingErrorMessage(data.message)
+                    }
+                })
+                .catch(()=> {
+                    setBookingErrorMessage('There was a problem connecting to the server')
+                })
+    }
+
     useEffect(() => {
         // Requires API to allow fetching of single car park
         fetch(`http://localhost:9000/carParks/${props.match.params.id}`)
@@ -59,7 +61,7 @@ const HandleBookingButton = () => {
         <main>
             <div className="all-car-parks-header">
                 <h1>Your booking</h1>
-                <img src="/parking-scout-logo.svg" alt="Parking Scout Logo" />
+                <Logo />
             </div>
             <div className="back">
                 <KeyboardArrowLeft /><Link to={`/availableCarParks/${props.match.params.duration}`}>Back to results</Link>
