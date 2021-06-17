@@ -28,7 +28,7 @@
     line-height: 1.5rem;
 }
 
-.card a {
+.card .bookButton {
     position: absolute;
     color: #FFFFFF;
     font-family: Prompt, sans-serif;

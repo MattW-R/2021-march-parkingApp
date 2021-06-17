@@ -11,7 +11,7 @@ const AvailableCarPark = (props) => {
                 style: 'currency',
                 currency: 'GBP'
             })} per hour</p>
-            <Link to={`/book/${props.id}/${props.duration}`}>Book</Link>
+            <Link className="bookButton" to={`/book/${props.id}/${props.duration}`}>Book</Link>
         </article>
     )
 }
