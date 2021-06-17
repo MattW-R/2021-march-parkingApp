@@ -7,7 +7,27 @@ import {todaysDate, todaysTime} from '../../Services/DateTimeService'
 const BookCarPark = (props) => {
     const [carPark, setCarPark] = useState({})
     const [redirect, setRedirect] = useState(false)
+    const [redirectRoute, setRedirectRoute] = useState('/availableCarParks/1')
+const HandleBookingButton = () => {
+        const HandleBooking ={
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                carParkId: props.match.params.id,
+                email: document.getElementById('email').value,
+                registration: document.getElementById('registration').value
 
+            })
+        }
+        fetch(`http://localhost:9000/bookings/`,HandleBooking)
+            .then(response => response.json())
+            .then(data=> {
+                if (data.success){
+                    setRedirectRoute(`/bookingSuccess/${data.data._id}`)
+                    setRedirect(true)
+                }
+            })
+}
     useEffect(() => {
         // Requires API to allow fetching of single car park
         fetch(`http://localhost:9000/carParks/${props.match.params.id}`)
@@ -25,7 +45,7 @@ const BookCarPark = (props) => {
     }, [])
 
     // if (redirect) {
-    //     return <Redirect to="/availableCarParks/1" />
+    //     return <Redirect to={redirectRoute} />
     // }
 
     return (
@@ -51,7 +71,7 @@ const BookCarPark = (props) => {
                 <input type="email" placeholder="name@example.com" id="email" />
                 <label htmlFor="registration">Car reg</label>
                 <input type="text" placeholder="ABC 123" id="registration" />
-                <button>Book</button>
+                <button onClick={HandleBookingButton}>Book</button>
             </article>
         </main>
     )
