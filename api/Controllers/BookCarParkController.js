@@ -8,20 +8,33 @@ const GetNearestHourInSeconds = require ('../Services/NearestHourService')
 const ObjectId = require('mongodb').ObjectId;
 
 let postBooking = async (req, res) => {
+    try {
+        const errors = validationResult(req)
 
-    const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            let jsonRes = jsonResponse.unsuccessful()
+            jsonRes.message = 'Invalid email'
+            jsonRes.status = 400
+            res.json(jsonRes)
+        } else if (!registrationValidator(req.body.registration)) {
+            let jsonRes = jsonResponse.unsuccessful()
+            jsonRes.message = 'Invalid car reg'
+            jsonRes.status = 400
+            res.json(jsonRes)
+        } else if (!ObjectId.isValid(req.body.carParkId)) {
+            let jsonRes = jsonResponse.unsuccessful()
+            jsonRes.message = 'Invalid car park id'
+            jsonRes.status = 400
+            res.json(jsonRes)
+        } else {
+            let newBooking = {
+                carParkId: ObjectId(req.body.carParkId),
+                duration: durationValidator(req.body.duration),
+                email: req.body.email,
+                registration: req.body.registration,
+                startDateTime: GetNearestHourInSeconds()
+            }
 
-    if (errors.isEmpty() && registrationValidator(req.body.registration) && ObjectId.isValid(req.body.carParkId)){
-
-        let newBooking = {
-            carParkId: ObjectId(req.body.carParkId),
-            duration: durationValidator(req.body.duration),
-            email: req.body.email,
-            registration: req.body.registration,
-            startDateTime: GetNearestHourInSeconds()
-        }
-
-        try {
             connectToDb(async (carParkCollection, bookingCollection) => {
                 const result = await carParkService.postBooking(bookingCollection, newBooking)
                 if (result.insertedCount == 1) {
@@ -37,16 +50,11 @@ let postBooking = async (req, res) => {
                     res.json(jsonRes)
                 }
             })
-        } catch (error) {
-            let jsonRes = jsonResponse.unsuccessful()
-            jsonRes.message = error.message
-            jsonRes.status = 500
-            res.json(jsonRes)
         }
-    } else {
+    } catch (error) {
         let jsonRes = jsonResponse.unsuccessful()
-        jsonRes.message = 'Invalid email'
-        jsonRes.status = 400
+        jsonRes.message = error.message
+        jsonRes.status = 500
         res.json(jsonRes)
     }
 }
