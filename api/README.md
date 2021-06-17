@@ -121,6 +121,7 @@
 ###POST
 
 -Sends the data for a car park booking
+    - `{'carParkId': '60c73a20ae1624754daa9f53', 'email': 'email@example.com', 'registration': 'LS56NIA', 'duration': 1}`
 - Data format - an object in the format: 
     - `{ '_id': '60c876061e57a1bc8122a33f', 'email': 'email@example.com', 'registration': 'LS56NIA', 'duration': 1, 'startDateTime': 1623924861, 'carParkId': '60c73a20ae1624754daa9f53' }`
 - Returns success true / false:
