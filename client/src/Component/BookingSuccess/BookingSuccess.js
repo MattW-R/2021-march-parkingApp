@@ -1,8 +1,7 @@
 import './BookingSuccess.css'
 import {useState, useEffect} from 'react'
 import {Link, Redirect} from 'react-router-dom'
-import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft"
-import {todaysDate, todaysTime} from '../../Services/DateTimeService'
+import {formatDate, formatTime} from '../../Services/DateTimeService'
 
 const BookingSuccess = (props) => {
     const [carPark, setCarPark] = useState({})
@@ -57,9 +56,9 @@ const BookingSuccess = (props) => {
                     style: 'currency',
                     currency: 'GBP'
                 })} per hour</p>
-                <p>Date: {todaysDate()}</p>
-                <p>Start time: {todaysTime()}</p>
-                <p>Duration: {props.match.params.duration || ''} hrs</p>
+                <p>Date: {formatDate(booking.startDateTime || new Date())}</p>
+                <p>Start time: {formatTime(booking.startDateTime || new Date())}</p>
+                <p>Duration: {booking.duration} hrs</p>
                 <p>Email: {booking.email} </p>
                 <p>Car reg: {booking.registration} </p>
                 <Link className="backToHomeButton" to="/">Back to home</Link>

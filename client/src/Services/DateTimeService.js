@@ -1,22 +1,28 @@
-const todaysDate = () => {
-    let today = new Date()
+const formatDate = (today) => {
     let day = today.getDate()
     let month = today.getMonth() + 1
     let year = today.getFullYear().toString().slice(-2)
-    today = day + '-' + month + '-' + year
-    return today
+    return day + '-' + month + '-' + year
+}
+
+const todaysDate = () => {
+    let today = new Date()
+    return formatDate(today)
+}
+
+const formatTime = (today) => {
+    const hour = today.getHours()
+    const minutes = today.getMinutes()
+    if (minutes <30) {
+        return hour + ':' + '00'
+    } else {
+        return hour+1 + ':' + '00'
+    }
 }
 
 const todaysTime = () => {
     let today = new Date()
-    const hour = today.getHours()
-    const minutes = today.getMinutes()
-    if (minutes <30) {
-        today = hour + ':' + '00'
-    } else {
-        today = hour+1 + ':' + '00'
-    }
-    return today
+    return formatTime(today)
 }
 
-export { todaysDate, todaysTime }
+export { formatDate, todaysDate, formatTime, todaysTime }
