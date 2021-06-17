@@ -10,7 +10,6 @@ const BookingSuccess = (props) => {
     const [redirect, setRedirect] = useState(false)
 
     useEffect(() => {
-        // Requires API to allow fetching of single car park
         fetch(`http://localhost:9000/bookings/${props.match.params.id}`)
             .then(result => result.json())
             .then(data => {
