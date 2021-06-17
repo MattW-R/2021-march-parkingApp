@@ -120,10 +120,14 @@
 
 ###POST
 
-- This route does not support POST requests
-
-- Returns success false:
-    - `{'success':false, 'message':"This route does not allow for PUT, POST or DELETE requests", 'status': 405 'data':[]}`
+-Sends the data for a car park booking
+- Data format - an object in the format: 
+    - `{ '_id': '60c876061e57a1bc8122a33f', 'email': 'email@example.com', 'registration': 'LS56NIA', 'duration': 1, 'startDateTime': 1623924861, 'carParkId': '60c73a20ae1624754daa9f53' }`
+- Returns success true / false:
+  - if the data are sent successfully
+    -`{'success':true, 'message':'New booking added', 'status': 201, 'data':[]}`
+  - if the data are not sent successfully
+      - `{'success':false, 'message':'Error in adding booking', 'status': 500, 'data':[]}`
 
 ###PUT
 
