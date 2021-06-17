@@ -21,7 +21,7 @@ let routes = (app) => {
 
     app.delete('/availableCarParks', NoMethodController)
 
-    app.post('/bookCarPark', body('email').trim().isEmail().normalizeEmail(), BookCarParkController)
+    app.post('/bookCarPark', [body('email').trim().isEmail().normalizeEmail(), body('registration').trim()], BookCarParkController)
 
     app.get('/bookCarPark', NoMethodController)
 
