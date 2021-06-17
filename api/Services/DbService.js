@@ -5,7 +5,8 @@ const connectToDb = (callback) => {
     MongoClient.connect(url, {useUnifiedTopology: true}, async (error, client) => {
         const db = client.db('parkingScout')
         const collection = db.collection('carParks')
-        callback(collection)
+        const bookingCollection = db.collection('bookings')
+        callback(collection, bookingCollection)
     })
 }
 
