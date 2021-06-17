@@ -37,9 +37,9 @@ const BookingSuccess = (props) => {
             })
     }, [])
 
-    // if (redirect) {
-    //     return <Redirect to="/" />
-    // }
+    if (redirect) {
+        return <Redirect to="/" />
+    }
 
     return (
         <main>

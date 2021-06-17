@@ -53,9 +53,9 @@ const BookCarPark = (props) => {
             })
     }, [])
 
-    // if (redirect) {
-    //     return <Redirect to={redirectRoute} />
-    // }
+    if (redirect) {
+        return <Redirect to={redirectRoute} />
+    }
 
     return (
         <main>
