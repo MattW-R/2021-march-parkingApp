@@ -3,9 +3,9 @@ const carParkService = require('../Services/CarParkService')
 const jsonResponse = require('../Services/JsonResponseService')
 const durationValidator = require ('../Services/Validators/durationValidator')
 const registrationValidator = require ('../Services/Validators/registrationValidator')
-const { validationResult } = require('express-validator');
+const { validationResult } = require('express-validator')
 const GetNearestHourInSeconds = require ('../Services/NearestHourService')
-const ObjectId = require('mongodb').ObjectId;
+const ObjectId = require('mongodb').ObjectId
 
 let postBooking = async (req, res) => {
     try {
