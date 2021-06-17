@@ -1,12 +1,13 @@
 import './Home.css'
 import Search from './../Search/Search'
 import {Link} from 'react-router-dom'
+import Logo from './../Logo/Logo'
 
 const Home = () => {
     return (
         <main className="home-header">
                 <div className="home-header-container">
-                    <img className="home-header-logo" src="parking-scout-logo.svg" alt="Parking Scout Logo" />
+                    <Logo />
                     <h1>Parking Scout</h1>
                 </div>
                 <Search />
