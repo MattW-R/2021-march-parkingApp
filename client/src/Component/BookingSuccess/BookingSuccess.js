@@ -42,7 +42,7 @@ const BookingSuccess = (props) => {
     }
 
     return (
-        <main>
+        <main className="book-car-park-page">
             <div className="all-car-parks-header">
                 <h1>Your booking</h1>
                 <Logo />
