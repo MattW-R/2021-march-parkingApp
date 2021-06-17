@@ -20,13 +20,13 @@ let routes = (app) => {
 
     app.delete('/availableCarParks', NoMethodController)
 
-    app.post('/bookCarParks', BookCarParkController)
+    app.post('/bookCarPark', BookCarParkController)
 
-    app.get('/bookCarParks', NoMethodController)
+    app.get('/bookCarPark', NoMethodController)
 
-    app.put('/bookCarParks', NoMethodController)
+    app.put('/bookCarPark', NoMethodController)
 
-    app.delete('/bookCarParks', NoMethodController)
+    app.delete('/bookCarPark', NoMethodController)
 }
 
 module.exports = routes
