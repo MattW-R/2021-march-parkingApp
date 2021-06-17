@@ -2,6 +2,7 @@ const CarParkController = require('../Controllers/CarParkController')
 const AvailableCarParkController = require('../Controllers/AvailableCarParkController')
 const BookCarParkController = require('../Controllers/BookCarParkController')
 const NoMethodController = require('../Controllers/NoMethodController')
+const { body } = require('express-validator');
 
 let routes = (app) => {
     app.get('/carParks', CarParkController)
@@ -20,7 +21,7 @@ let routes = (app) => {
 
     app.delete('/availableCarParks', NoMethodController)
 
-    app.post('/bookCarPark', BookCarParkController)
+    app.post('/bookCarPark', body('email').trim().isEmail().normalizeEmail(), BookCarParkController)
 
     app.get('/bookCarPark', NoMethodController)
 

@@ -1,18 +1,24 @@
 const connectToDb = require('../Services/DbService')
 const carParkService = require('../Services/CarParkService')
 const jsonResponse = require('../Services/JsonResponseService')
-const emailValidator = require('../Services/Validators/EmailValidator')
-const RegistrationValidator = require ('../Services/Validators/RegistrationValidator')
+// const emailValidator = require('../Services/Validators/EmailValidator')
+const registrationValidator = require ('../Services/Validators/registrationValidator')
+const { validationResult } = require('express-validator');
 
 let postBooking = async (req, res) => {
 
-    console.log(req.body.email)
+    const errors = validationResult(req)
+    if (!errors.isEmpty()) {
+        console.log(errors)
+    }
 
-    if (emailValidator(req.body.email) && registration){
+    if (registrationValidator(req.body.registration)){
+
         let newBooking = {
             email: req.body.email,
             registration: req.body.registration
         }
+
         try {
             connectToDb(async (carParkCollection, bookingCollection) => {
                 const result = await carParkService.postBooking(bookingCollection, newBooking)
