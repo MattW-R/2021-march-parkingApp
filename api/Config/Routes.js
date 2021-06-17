@@ -2,10 +2,13 @@ const CarParkController = require('../Controllers/CarParkController')
 const AvailableCarParkController = require('../Controllers/AvailableCarParkController')
 const BookCarParkController = require('../Controllers/BookCarParkController')
 const NoMethodController = require('../Controllers/NoMethodController')
-const { body } = require('express-validator');
+const GetBookingController = require('../Controllers/GetBookingController')
+const { body } = require('express-validator')
 
 let routes = (app) => {
-    app.get('/carParks', CarParkController)
+    app.get('/carParks', CarParkController.getAllCarParks)
+
+    app.get('/carParks/:id', CarParkController.getOneCarPark)
 
     app.post('/carParks', NoMethodController)
 
@@ -21,9 +24,11 @@ let routes = (app) => {
 
     app.delete('/availableCarParks', NoMethodController)
 
-    app.post('/bookCarPark', [body('email').trim().isEmail().normalizeEmail(), body('registration').trim()], BookCarParkController)
+    app.get('/bookCarPark', GetBookingController.getAllBookings)
 
-    app.get('/bookCarPark', NoMethodController)
+    app.get('/bookCarPark/:id', GetBookingController.getOneBooking)
+
+    app.post('/bookCarPark', [body('email').trim().isEmail().normalizeEmail(), body('registration').trim()], BookCarParkController)
 
     app.put('/bookCarPark', NoMethodController)
 

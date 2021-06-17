@@ -1,7 +1,14 @@
 const NearestHourService = require('./NearestHourService')
+const MongoId = require('mongodb').ObjectId
 
 const getAllCarParks = async (collection) => {
     return collection.find({}).toArray()
+}
+
+const getOneCarPark = async (collection, id) => {
+    return collection.find({
+        _id: MongoId(id)
+    }).toArray()
 }
 
 const getAvailableCarParks = async (carParkCollection, duration) => {
@@ -69,5 +76,6 @@ let postBooking = async (bookingCollection, newBooking) => {
 }
 
 module.exports.getAllCarParks = getAllCarParks
+module.exports.getOneCarPark = getOneCarPark
 module.exports.getAvailableCarParks = getAvailableCarParks
 module.exports.postBooking = postBooking
